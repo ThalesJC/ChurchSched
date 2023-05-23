@@ -9,7 +9,7 @@ function Provider({ children }: IProps) {
   const [state, _setState] = useState({});
 
   return (
-    <MyContext.Provider value={ state }>
+    <MyContext.Provider value={state}>
       {children}
     </MyContext.Provider>
   )

@@ -1,9 +1,8 @@
-import LoginCard from "../Components/LoginCard"
-
+import LoginCard from "../Components/LoginCard";
+ 
 export default function Login() {
-    
 
     return (
-        <LoginCard />
+        <LoginCard />        
     )
 }
