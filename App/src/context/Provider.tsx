@@ -6,7 +6,7 @@ interface IProps {
 }
 
 function Provider({ children }: IProps) {
-  const [state, setState] = useState({});
+  const [state, _setState] = useState({});
 
   return (
     <MyContext.Provider value={ state }>
