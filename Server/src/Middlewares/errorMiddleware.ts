@@ -1,6 +1,6 @@
-import { ErrorRequestHandler } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
-const errorMiddleware: ErrorRequestHandler = (error, _req, res, next) => {
+const errorMiddleware: ErrorRequestHandler = (error, _req: Request, res: Response, next: NextFunction) => {
   const { name, message, details } = error;
   console.error(`name: ${name}`);
 
