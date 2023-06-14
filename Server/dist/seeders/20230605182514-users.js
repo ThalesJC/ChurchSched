@@ -14,9 +14,8 @@ module.exports = {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryInterface.bulkInsert('users', [{
                     name: 'Thales Admin',
-                    phoneNum: '51982782428',
+                    phoneNum: 'senha super secreta',
                     role: 'admin',
-                    password: '123456',
                 },
                 {
                     name: 'Thales User',

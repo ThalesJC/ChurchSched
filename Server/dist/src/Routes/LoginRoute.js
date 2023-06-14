@@ -7,6 +7,6 @@ const express_1 = require("express");
 const LoginController_1 = __importDefault(require("../Controller/LoginController"));
 const router = (0, express_1.Router)();
 const loginController = new LoginController_1.default();
-// router.post('/login', loginController.login);
-router.get('/', loginController.teste);
+router.post('/', loginController.login);
+// router.get('/', loginController.teste)
 exports.default = router;

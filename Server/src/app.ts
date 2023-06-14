@@ -7,7 +7,7 @@ import loginRouter from './Routes/LoginRoute';
 const app = express();
 
 app.use(express.json());
-app.use('/login', loginRouter);
+app.use(loginRouter);
 
 app.get('/', (_req: Request, res: Response) => {
   return res.status(StatusCodes.OK).send('Hello World!');

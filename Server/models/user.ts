@@ -27,10 +27,6 @@ User.init({
   role: {
     type: STRING,
     allowNull: false,
-  },
-  password: {
-    type: STRING,
-    allowNull: true,
   }
 }, {
   sequelize: db,

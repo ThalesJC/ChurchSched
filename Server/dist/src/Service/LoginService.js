@@ -15,21 +15,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user_1 = __importDefault(require("../../models/user"));
 class LoginService {
     constructor() {
-        // public login = async ({ name, phoneNumber }: LoginData) => {
-        //   if (!name || !phoneNumber) {
-        //     throw new Error("Params missing");
-        //   }
-        //   const user = await User.findOne({ where: { name } });
-        //   if (!user) {
-        //     throw new Error("User not found");
-        //   }
-        //   return user;
-        // };
-        this.teste = () => __awaiter(this, void 0, void 0, function* () {
-            const users = yield user_1.default.findAll();
-            console.log("camada SERVICE", users);
-            return users;
+        this.login = ({ name, phoneNumber }) => __awaiter(this, void 0, void 0, function* () {
+            // if (!name || !phoneNumber) {
+            //   throw new Error("Params missing");
+            // }
+            const user = yield user_1.default.findAll({});
+            // if (!user) {
+            //   throw new Error("User not found");
+            // }
+            return user;
         });
+        // public teste = async () => {
+        //   const users = await User.findAll();
+        //   console.log("camada SERVICE", users);
+        //   return users;
+        // };
     }
 }
 exports.default = LoginService;
