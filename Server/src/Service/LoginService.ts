@@ -1,17 +1,21 @@
 import User from "../../models/user";
 
-interface LoginData {
+interface IUser {
   name: string;
-  phoneNumber: string;
+  phoneNum: string;
 }
 
+interface IUpdate extends IUser {
+  id: String;
+};
+
 export default class LoginService {
-  public login = async ({ name, phoneNumber }: LoginData) => {
-    if (!name || !phoneNumber) {
+  public login = async ({ name, phoneNum }: IUser) => {
+    if (!name || !phoneNum) {
       throw new Error("Params missing");
     }
 
-    const user = await User.findOne({ where: {name, phoneNum: phoneNumber } });
+    const user = await User.findOne({ where: {name, phoneNum } });
 
     if (!user) {
       throw new Error("User not found");
@@ -20,17 +24,17 @@ export default class LoginService {
     return user;
   };
 
-  public register = async ({ name, phoneNumber }: LoginData) => {
+  public register = async ({ name, phoneNum }: IUser) => {
     const role = 'user'
-    if (!name || !phoneNumber) {
+    if (!name || !phoneNum) {
       throw new Error("Params missing");
     }
 
-    await User.create({ name, phoneNum: phoneNumber, role });
+    await User.create({ name, phoneNum, role });
 
     return {
       name,
-      phoneNumber,
+      phoneNum,
       role,
     };
   };
@@ -41,17 +45,17 @@ export default class LoginService {
     return users;
   };
 
-  public update = async ({ name, phoneNumber }: LoginData) => {
-    if (!name || !phoneNumber) {
+  public update = async ({ id, name, phoneNum }: IUpdate) => {
+    if (!name || !phoneNum) {
       throw new Error("Params missing");
     }
 
-    await User.update({ name, phoneNum: phoneNumber }, { where: { name } });
+    await User.update({ name, phoneNum }, { where: { id } });
 
     return true;
   };
 
-  public delete = async (id: Number) => {
+  public delete = async (id: String) => {
     if (!id) {
       throw new Error("Params missing");
     }
