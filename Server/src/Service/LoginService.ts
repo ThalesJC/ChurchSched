@@ -46,22 +46,31 @@ export default class LoginService {
   };
 
   public update = async ({ id, name, phoneNum }: IUpdate) => {
-    if (!name || !phoneNum) {
-      throw new Error("Params missing");
+    try {
+      if (!name || !phoneNum) {
+        throw new Error("Params missing");
+      }
+  
+      await User.update({ name, phoneNum }, { where: { id } });
+  
+      return "User updated successfully!";  
+    } catch (error) {
+      throw new Error("Something gone wrong!");
     }
-
-    await User.update({ name, phoneNum }, { where: { id } });
-
-    return true;
   };
 
   public delete = async (id: String) => {
-    if (!id) {
-      throw new Error("Params missing");
+    try {
+      if (!id) {
+        throw new Error("Params missing");
+      }
+  
+      await User.destroy({ where: { id } });
+  
+      return "User updated successfully!";
+      
+    } catch (error) {
+      throw new Error("Something gone wrong!");
     }
-
-    await User.destroy({ where: { id } });
-
-    return true;
   };
 };
